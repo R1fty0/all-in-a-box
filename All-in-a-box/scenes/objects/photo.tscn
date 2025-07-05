@@ -16,7 +16,7 @@ script = ExtResource("1_l1rhr")
 
 [node name="Model" parent="." instance=ExtResource("1_aaquk")]
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Image" type="Sprite3D" parent="."]
 transform = Transform3D(-2.72702e-08, -0.901163, -4.37357e-08, 0, -3.93911e-08, 1.00056, -0.62387, 3.93911e-08, 1.91175e-15, -0.106067, 0.0707939, 0)
 texture = ExtResource("2_l1rhr")
 
