@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ch0yb2bi666tb"]
+[gd_scene load_steps=10 format=3 uid="uid://ch0yb2bi666tb"]
 
 [ext_resource type="Script" uid="uid://c6s6ibvmkh1ub" path="res://scenes/player_hand.gd" id="1_w2twt"]
-[ext_resource type="PackedScene" uid="uid://b43412unuohwk" path="res://scenes/objects/photo.tscn" id="2_pw63i"]
+[ext_resource type="PackedScene" uid="uid://b43412unuohwk" path="res://scenes/objects/items/photo.tscn" id="2_pw63i"]
+[ext_resource type="PackedScene" uid="uid://ddbhc4qeulcl7" path="res://scenes/objects/environment/table.tscn" id="3_7ykc4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7ykc4"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -16,10 +17,10 @@ sky = SubResource("Sky_pu3yx")
 tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rt2n2"]
-albedo_color = Color(0.0408075, 0.244357, 0, 1)
+albedo_color = Color(0.271491, 0.167396, 0.146514, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_und3l"]
-albedo_color = Color(0.476157, 0.235647, 0.0737752, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ykc4"]
+albedo_color = Color(2.40654e-07, 0.236138, 0.194238, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2twt"]
 albedo_color = Color(0.783622, 0.115242, 0.142173, 1)
@@ -38,8 +39,9 @@ shadow_enabled = true
 [node name="Environment" type="Node" parent="."]
 
 [node name="StartingBox" type="CSGCombiner3D" parent="Environment"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3445, 0.181116, 7.31894)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.3445, -7.31703, 26.3189)
 operation = 2
+calculate_tangents = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Environment/StartingBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.580444, 0)
@@ -51,41 +53,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0377197, 0.631492, -0.04401
 operation = 2
 size = Vector3(2.15063, 0.529785, 2.01703)
 
-[node name="Table" type="CSGCombiner3D" parent="Environment"]
-use_collision = true
+[node name="NotNeededBox" type="CSGCombiner3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.3445, -7.31703, 21.3189)
+operation = 2
+calculate_tangents = false
 
-[node name="TableTop" type="CSGBox3D" parent="Environment/Table"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3105, 0, 5.18237)
-size = Vector3(27.3789, 1, 14.6353)
-material = SubResource("StandardMaterial3D_und3l")
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/NotNeededBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.580444, 0)
+size = Vector3(2.75337, 0.482178, 2.54907)
+material = SubResource("StandardMaterial3D_7ykc4")
 
-[node name="TableLeg" type="CSGBox3D" parent="Environment/Table"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.8578, -12.3636, 10.9113)
-size = Vector3(2, 24, 2)
-
-[node name="TableLeg2" type="CSGBox3D" parent="Environment/Table"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.779587, -12.3636, 10.9113)
-size = Vector3(2, 24, 2)
-
-[node name="TableLeg3" type="CSGBox3D" parent="Environment/Table"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.8578, -12.3636, -0.760638)
-size = Vector3(2, 24, 2)
-
-[node name="TableLeg4" type="CSGBox3D" parent="Environment/Table"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.779587, -12.3636, -0.760638)
-size = Vector3(2, 24, 2)
+[node name="CSGBox3D2" type="CSGBox3D" parent="Environment/NotNeededBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0377197, 0.631492, -0.0440135)
+operation = 2
+size = Vector3(2.15063, 0.529785, 2.01703)
 
 [node name="Floor" type="CSGBox3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 0)
 size = Vector3(100, 1, 100)
 material = SubResource("StandardMaterial3D_w2twt")
 
+[node name="Table" parent="Environment" instance=ExtResource("3_7ykc4")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -34.4403, -23.2728, 32.4691)
+
 [node name="Camera3D" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.999998, 0.00168295, -0.000639147, 0, 0.355036, 0.934853, 0.00180023, -0.934851, 0.355035, -10.9478, 12.3217, 11.2213)
+transform = Transform3D(0.999998, 0.00158893, -0.000864358, 0, 0.477858, 0.878437, 0.00180882, -0.878435, 0.477858, -19.0837, 4.1282, 31.3524)
 
 [node name="PlayerHand" type="RayCast3D" parent="."]
 script = ExtResource("1_w2twt")
+object_height = -5.5
 
 [node name="Photo" parent="." instance=ExtResource("2_pw63i")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19.8513, 1.31786, -0.0513821)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19.8513, -5.34498, 26.339)
+
+[node name="Photo2" parent="." instance=ExtResource("2_pw63i")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22.8277, -5.34498, 22.3036)
+
+[node name="Photo3" parent="." instance=ExtResource("2_pw63i")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17.7462, -5.34498, 22.3036)

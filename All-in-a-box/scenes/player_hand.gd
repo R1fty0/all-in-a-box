@@ -3,7 +3,6 @@ extends RayCast3D
 @export_group("Interaction Settings")
 @export var object_height: float = 2.0
 
-
 # | = union 
 var item_in_hand: Photo 
 
