@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://ch0yb2bi666tb"]
+
+[ext_resource type="Script" uid="uid://c6s6ibvmkh1ub" path="res://scenes/player_hand.gd" id="1_w2twt"]
+[ext_resource type="PackedScene" uid="uid://b43412unuohwk" path="res://scenes/objects/photo.tscn" id="2_pw63i"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7ykc4"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_pu3yx"]
+sky_material = SubResource("ProceduralSkyMaterial_7ykc4")
+
+[sub_resource type="Environment" id="Environment_gubc5"]
+background_mode = 2
+sky = SubResource("Sky_pu3yx")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_und3l"]
+albedo_color = Color(0.476157, 0.235647, 0.0737752, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2twt"]
+albedo_color = Color(0.783622, 0.115242, 0.142173, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rt2n2"]
+albedo_color = Color(0.0408075, 0.244357, 0, 1)
+
+[node name="MainScene" type="Node3D"]
+
+[node name="Lighting" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
+environment = SubResource("Environment_gubc5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Table" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="TableTop" type="CSGBox3D" parent="Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3105, 0, 5.18237)
+size = Vector3(27.3789, 1, 14.6353)
+material = SubResource("StandardMaterial3D_und3l")
+
+[node name="TableLeg" type="CSGBox3D" parent="Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.8578, -12.3636, 10.9113)
+size = Vector3(2, 24, 2)
+
+[node name="TableLeg2" type="CSGBox3D" parent="Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.779587, -12.3636, 10.9113)
+size = Vector3(2, 24, 2)
+
+[node name="TableLeg3" type="CSGBox3D" parent="Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.8578, -12.3636, -0.760638)
+size = Vector3(2, 24, 2)
+
+[node name="TableLeg4" type="CSGBox3D" parent="Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.779587, -12.3636, -0.760638)
+size = Vector3(2, 24, 2)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999998, 0.00168295, -0.000639147, 0, 0.355036, 0.934853, 0.00180023, -0.934851, 0.355035, -10.9478, 12.3217, 11.2213)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 0)
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_w2twt")
+
+[node name="PlayerHand" type="Node" parent="."]
+script = ExtResource("1_w2twt")
+
+[node name="StartingBox" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3445, 0.181116, 7.31894)
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StartingBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.580444, 0)
+size = Vector3(2.75337, 0.482178, 2.54907)
+material = SubResource("StandardMaterial3D_rt2n2")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="StartingBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0377197, 0.631492, -0.0440135)
+operation = 2
+size = Vector3(2.15063, 0.529785, 2.01703)
+
+[node name="Photo" parent="." instance=ExtResource("2_pw63i")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -19.8513, 1.31786, -0.0513821)

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b43412unuohwk"]
+
+[ext_resource type="PackedScene" uid="uid://q56f5ci6c0m8" path="res://assets/models/photo.glb" id="1_aaquk"]
+[ext_resource type="Script" uid="uid://xdflblmihem7" path="res://scenes/objects/photo.gd" id="1_l1rhr"]
+[ext_resource type="Texture2D" uid="uid://b20anel2b1ff6" path="res://assets/photos/test_photo.png" id="2_l1rhr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1rhr"]
+size = Vector3(1.9982, 0.223389, 2.01233)
+
+[node name="Photo" type="RigidBody3D"]
+transform = Transform3D(0.998809, 0, 0, 0, 0.998809, 0, 0, 0, 0.998809, 0, 0, 0)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_l1rhr")
+
+[node name="Model" parent="." instance=ExtResource("1_aaquk")]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-2.72702e-08, -0.901163, -4.37357e-08, 0, -3.93911e-08, 1.00056, -0.62387, 3.93911e-08, 1.91175e-15, -0.106067, 0.0707939, 0)
+texture = ExtResource("2_l1rhr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999987, 0, 0, 0, 0.999987, 0, 0, 0, 0.999987, -0.00801111, -0.00012153, -0.00543236)
+shape = SubResource("BoxShape3D_l1rhr")
+debug_color = Color(1.44392e-06, 0.823622, 0.377351, 0.42)
