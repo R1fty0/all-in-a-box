@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://mb3j5mb343jg"]
+
+[ext_resource type="Script" uid="uid://bsj2ab46x0m0e" path="res://scenes/components/selection_highlighter.gd" id="1_rusmg"]
+[ext_resource type="Material" uid="uid://ct5fo583dpfkb" path="res://materials/select_object_outline.tres" id="2_mysjc"]
+
+[node name="SelectionHighlighter" type="StaticBody3D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_rusmg")
+outline_material = ExtResource("2_mysjc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+debug_color = Color(0.961248, 0, 0.511433, 0.42)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

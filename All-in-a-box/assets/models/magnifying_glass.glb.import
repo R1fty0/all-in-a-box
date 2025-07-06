@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bimfm25bcm1n"
-path="res://.godot/imported/table.glb-77ddeb5cb2b4d102b457ffd0a4efe8ae.scn"
+uid="uid://p6dptfuhywgf"
+path="res://.godot/imported/magnifying_glass.glb-596c038031105621644966f623c760e2.scn"
 
 [deps]
 
-source_file="res://assets/models/table.glb"
-dest_files=["res://.godot/imported/table.glb-77ddeb5cb2b4d102b457ffd0a4efe8ae.scn"]
+source_file="res://assets/models/magnifying_glass.glb"
+dest_files=["res://.godot/imported/magnifying_glass.glb-596c038031105621644966f623c760e2.scn"]
 
 [params]
 
